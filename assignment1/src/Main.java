@@ -1,5 +1,5 @@
-/*
- * Main test code for Cousera cryptocurrency assignment1
+package src;/*
+ * src.Main test code for Cousera cryptocurrency assignment1
  * Based on code by Sven Mentl and Pietro Brunetti
  * 
  * Copyright:
@@ -27,7 +27,7 @@ public class Main {
          *
          * Generating a root transaction tx out of thin air, so that Scrooge owns a coin of value 10
          * By thin air I mean that this tx will not be validated, I just need it to get
-         * a proper Transaction.Output which I then can put in the UTXOPool, which will be passed
+         * a proper src.Transaction.Output which I then can put in the src.UTXOPool, which will be passed
          * to the TXHandler.
          */
         Tx tx = new Tx();
@@ -40,7 +40,7 @@ public class Main {
         tx.signTx(pk_scrooge.getPrivate(), 0);
 
         /*
-         * Set up the UTXOPool
+         * Set up the src.UTXOPool
          */
         // The transaction output of the root transaction is the initial unspent output.
         UTXOPool utxoPool = new UTXOPool();
@@ -48,11 +48,11 @@ public class Main {
         utxoPool.addUTXO(utxo, tx.getOutput(0));
 
         /*  
-         * Set up a test Transaction
+         * Set up a test src.Transaction
          */
         Tx tx2 = new Tx();
 
-        // the Transaction.Output of tx at position 0 has a value of 10
+        // the src.Transaction.Output of tx at position 0 has a value of 10
         tx2.addInput(tx.getHash(), 0);
 
         // I split the coin of value 10 into 3 coins and send all of them for simplicity to
@@ -64,18 +64,18 @@ public class Main {
         // Doubles exhibit floating-point rounding errors. This type should be for example BigInteger
         // and denote the smallest coin fractions (Satoshi in Bitcoin).
 
-        // There is only one (at position 0) Transaction.Input in tx2
+        // There is only one (at position 0) src.Transaction.Input in tx2
         // and it contains the coin from Scrooge, therefore I have to sign with the private key from Scrooge
         tx2.signTx(pk_scrooge.getPrivate(), 0);
         
         /*
          * Start the test
          */
-        // Remember that the utxoPool contains a single unspent Transaction.Output which is
+        // Remember that the utxoPool contains a single unspent src.Transaction.Output which is
         // the coin from Scrooge.
         TxHandler txHandler = new TxHandler(utxoPool);
         System.out.println("txHandler.isValidTx(tx2) returns: " + txHandler.isValidTx(tx2));
-        System.out.println("txHandler.handleTxs(new Transaction[]{tx2}) returns: " +
+        System.out.println("txHandler.handleTxs(new src.Transaction[]{tx2}) returns: " +
             txHandler.handleTxs(new Transaction[]{tx2}).length + " transaction(s)");
     }
 

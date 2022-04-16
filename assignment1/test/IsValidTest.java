@@ -1,4 +1,4 @@
-// Copyright (C) 2016-2017 Enrique Albertos
+package test;// Copyright (C) 2016-2017 Enrique Albertos
 // Distributed under the GNU GPL v2 software license
 
 
@@ -9,6 +9,10 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SignatureException;
 
 import org.junit.Test;
+import src.Transaction;
+import src.TxHandler;
+import test.UtxoTestSet;
+
 /**
  * Unit tests for {@link TxHandler#isValidTx(Transaction)}
  * <p>
@@ -18,7 +22,7 @@ import org.junit.Test;
  * Test 3: test isValidTx() with transactions containing signatures using incorrect private keys
  * Test 4: test isValidTx() with transactions whose total output value exceeds total input value
  * Test 5: test isValidTx() with transactions that claim outputs not in the current utxoPool
- * Test 6: test isValidTx() with transactions that claim the same UTXO multiple times
+ * Test 6: test isValidTx() with transactions that claim the same src.UTXO multiple times
  * Test 7: test isValidTx() with transactions that contain a negative output value
  * 
  * @author ealbertos
@@ -145,7 +149,7 @@ public class IsValidTest {
 		
 	}
 	
-    // Test 6: test isValidTx() with transactions that claim the same UTXO multiple times
+    // Test 6: test isValidTx() with transactions that claim the same src.UTXO multiple times
 	@Test
 	public void testIsValidTransactionsClaimingTheSameUTXOSeveralTimes() throws NoSuchAlgorithmException, InvalidKeyException, SignatureException {
 		// Create a new set of transactions for testing				

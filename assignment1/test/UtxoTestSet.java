@@ -1,5 +1,9 @@
-// Copyright (C) 2016-2017 Enrique Albertos
+package test;// Copyright (C) 2016-2017 Enrique Albertos
 // Distributed under the GNU GPL v2 software license
+
+import src.Transaction;
+import src.UTXO;
+import src.UTXOPool;
 
 import java.security.InvalidKeyException;
 import java.security.KeyPair;
@@ -102,7 +106,7 @@ public class UtxoTestSet {
 
 		/**
 		 * Number of utxo in the pool to create for the set, the same number is created for the extraPool set
-		 * Extra Pool set is used to create transactions tha use UTXO no in the actual pool
+		 * Extra Pool set is used to create transactions tha use src.UTXO no in the actual pool
 		 * @param utxoTxNumber number of utxo in the pool to create for the set
 		 * @return this builder
 		 */
@@ -215,7 +219,7 @@ public class UtxoTestSet {
 		}
 
 		/**
-		 * Create transactions that claim the same UTXO multiple times
+		 * Create transactions that claim the same src.UTXO multiple times
 		 * @param value True force creation
 		 * @return  this builder
 		 */
@@ -400,7 +404,7 @@ public class UtxoTestSet {
 			throws NoSuchAlgorithmException, InvalidKeyException, SignatureException {
 		final ArrayList<UTXO> utxoList = getAllUTXO(utxoPool);
 		final ArrayList<UTXO> utxoExtraList = getAllUTXO(utxoExtraPool);
-		//final UTXOPool utxoPool = new UTXOPool();
+		//final src.UTXOPool utxoPool = new src.UTXOPool();
 		final Map<Integer, UTXO> utxoAtIndex = new HashMap<>();
 		final Set<UTXO> utxosSeen = new HashSet<>();
 		final Set<UTXO> utxosToRepeat = new HashSet<>();
